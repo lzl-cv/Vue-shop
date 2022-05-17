@@ -11,6 +11,11 @@ import '@/assets/fonts/iconfont.css'
 // 导入axio包
 import axios from 'axios'
 axios.defaults.baseURL = ' https://lianghj.top:8888/api/private/v1/'
+axios.interceptors.request.use(config => {
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  // 固定写法最后必须返回
+  return config
+})
 Vue.use(ElementUI)
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
