@@ -4,6 +4,8 @@ import Login from '@/components/Login.vue'
 import Home from '@/components/Home.vue'
 import Welcome from '@/components/Welocome.vue'
 import Users from '@/components/User/user.vue'
+import Rights from '@/components/power/rights.vue'
+import Role from '@/components/Role/role.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -25,6 +27,12 @@ const routes = [
     },{
       path: '/users',
       component: Users
+    },{
+      path: '/rights',
+      component: Rights
+    },{
+      path:'/roles',
+      component: Role
     }]
   }
 ]
@@ -42,4 +50,9 @@ router.beforeEach((to, from, next) => {
   if(!token) return next('/login')
   next()
 })
+const originalPush =  VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 export default router
