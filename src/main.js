@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
+import TreeTable from 'vue-table-with-tree-grid'
 // 导入全局样式表
 import '@/assets/css/global.css'
 // 导入字体图标
@@ -16,6 +16,7 @@ axios.interceptors.request.use(config => {
   // 固定写法最后必须返回
   return config
 })
+Vue.component('tree-tabel',TreeTable)
 Vue.use(ElementUI)
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
