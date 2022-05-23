@@ -65,7 +65,7 @@ export default {
       queryInfo: {
         type: 3,
         pagenum: 1,
-        pagesize: 5
+        pagesize: 10
       },
       // 分页数据(总数据条数)
       total: 0,
